@@ -12,8 +12,8 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate{
     
     var isGameStarted = Bool(false)
-    var isDied = Bool(false)
-    let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
+    var isDead = Bool(false)
+    let pointSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
 
     var score = Int(0)
     var scoreLbl = SKLabelNode()
@@ -26,10 +26,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveAndRemove = SKAction()
 
     //CREATE THE BIRD ATLAS FOR ANIMATION
-    let birdAtlas = SKTextureAtlas(named:"player")
-    var birdSprites = Array<Any>()
-    var bird = SKSpriteNode()
-    var repeatActionBird = SKAction()
+    let playerAtlas = SKTextureAtlas(named:"player")
+    var playerSprites = Array<Any>()
+    var player = SKSpriteNode()
+    var repeatActionPlayer = SKAction()
     
     
     
@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         override func update(_ currentTime: TimeInterval) {
                 // Called before each frame is rendered
                 if isGameStarted == true{
-                    if isDied == false{
+                    if isDead == false{
                         enumerateChildNodes(withName: "background", using: ({
                             (node, error) in
                             let bg = node as! SKSpriteNode
@@ -59,8 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func createScene(){
        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
        self.physicsBody?.categoryBitMask = CollisionBitMask.groundCategory
-       self.physicsBody?.collisionBitMask = CollisionBitMask.birdCategory
-       self.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+       self.physicsBody?.collisionBitMask = CollisionBitMask.playerCategory
+       self.physicsBody?.contactTestBitMask = CollisionBitMask.playerCategory
        self.physicsBody?.isDynamic = false
        self.physicsBody?.affectedByGravity = false
 
@@ -77,18 +77,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
         
         }
-        //SET UP THE BIRD SPRITES FOR ANIMATION
-        birdSprites.append(birdAtlas.textureNamed("bird1"))
-        birdSprites.append(birdAtlas.textureNamed("bird2"))
-        birdSprites.append(birdAtlas.textureNamed("bird3"))
-        birdSprites.append(birdAtlas.textureNamed("bird4"))
+        //SET UP THE PLAYER SPRITES FOR ANIMATION
+        playerSprites.append(playerAtlas.textureNamed("floppy1"))
+        playerSprites.append(playerAtlas.textureNamed("floppy2"))
+        playerSprites.append(playerAtlas.textureNamed("floppy3"))
+        playerSprites.append(playerAtlas.textureNamed("floppy4"))
         
-        self.bird = createBird()
-        self.addChild(bird)
+        self.player = createPlayer()
+        self.addChild(player)
                 
         //PREPARE TO ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
-        let animateBird = SKAction.animate(with: self.birdSprites as! [SKTexture], timePerFrame: 0.1)
-        self.repeatActionBird = SKAction.repeatForever(animateBird)
+        let animatePlayer = SKAction.animate(with: self.playerSprites as! [SKTexture], timePerFrame: 0.1)
+        self.repeatActionPlayer = SKAction.repeatForever(animatePlayer)
+        
+        scoreLbl = createScoreLabel()
+        self.addChild(scoreLbl)
+        
+        highscoreLbl = createHighscoreLabel()
+        self.addChild(highscoreLbl)
+        
+        createLogo()
+        
+        taptoplayLbl = createTaptoplayLabel()
+        self.addChild(taptoplayLbl)
     }
     
     }
