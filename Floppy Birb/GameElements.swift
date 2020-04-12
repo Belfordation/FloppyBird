@@ -100,5 +100,68 @@ extension GameScene {
         taptoplayLbl.fontName = "HelveticaNeue"
         return taptoplayLbl
     }
+    
+    func createWalls() -> SKNode{
+        let pointNode = SKSpriteNode(imageNamed: "file")
+        pointNode.size = CGSize(width: 40, height: 40)
+        pointNode.position = CGPoint(x: self.frame.width+25, y: self.frame.height/2)
+        pointNode.physicsBody = SKPhysicsBody(rectangleOf: pointNode.size)
+        pointNode.physicsBody?.affectedByGravity = false
+        pointNode.physicsBody?.isDynamic = false
+        pointNode.physicsBody?.categoryBitMask = CollisionBitMask.flowerCategory
+        pointNode.physicsBody?.collisionBitMask = 0
+        pointNode.physicsBody?.contactTestBitMask = CollisionBitMask.playerCategory
+        pointNode.color = SKColor.blue
+        
+        wallPair = SKNode()
+        wallPair.name = "wallPair"
+            
+        let topWall = SKSpriteNode(imageNamed: "pillar")
+        let btmWall = SKSpriteNode(imageNamed: "pillar")
+        
+        topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + 420)
+        btmWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 - 420)
+        
+        topWall.setScale(0.5)
+        btmWall.setScale(0.5)
+        
+        topWall.physicsBody = SKPhysicsBody(rectangleOf: topWall.size)
+        topWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
+        topWall.physicsBody?.collisionBitMask = CollisionBitMask.playerCategory
+        topWall.physicsBody?.contactTestBitMask = CollisionBitMask.playerCategory
+        topWall.physicsBody?.isDynamic = false
+        topWall.physicsBody?.affectedByGravity = false
+        
+        btmWall.physicsBody = SKPhysicsBody(rectangleOf: btmWall.size)
+        btmWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
+        btmWall.physicsBody?.collisionBitMask = CollisionBitMask.playerCategory
+        btmWall.physicsBody?.contactTestBitMask = CollisionBitMask.playerCategory
+        btmWall.physicsBody?.isDynamic = false
+        btmWall.physicsBody?.affectedByGravity = false
+        
+        topWall.zRotation = CGFloat.pi
+        
+        wallPair.addChild(topWall)
+        wallPair.addChild(btmWall)
+        
+        wallPair.zPosition = 1
+        
+        let randomPosition = random(min: -200, max: 200)
+        wallPair.position.y = wallPair.position.y + randomPosition
+        wallPair.addChild(pointNode)
+        
+        wallPair.run(moveAndRemove)
+        
+        return wallPair
+        
+    }
+    
+    func random() -> CGFloat{
+        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+    }
+    
+    func random(min: CGFloat, max: CGFloat) -> CGFloat{
+        return random() * (max-min) + min
+    }
 }
 

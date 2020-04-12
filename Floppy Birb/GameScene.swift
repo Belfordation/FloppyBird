@@ -38,8 +38,74 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
         
    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    if isGameStarted == false{
+        isGameStarted = true
+        player.physicsBody?.affectedByGravity = true
+        createPauseBtn()
         
+        logoImg.run(SKAction.scale(by: 0.5, duration: 0.3), completion:
+            {
+                self.logoImg.removeFromParent()
+        })
+        taptoplayLbl.removeFromParent()
+        
+        self.player.run(repeatActionPlayer)
+        
+        let spawn = SKAction.run({
+            () in
+            self.wallPair = self.createWalls()
+            self.addChild(self.wallPair)
+        })
+        
+        let delay = SKAction.wait(forDuration: 1.5)
+        let SpawnDelay = SKAction.sequence([spawn, delay])
+        let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
+        self.run(spawnDelayForever)
+        
+        let distance = CGFloat(self.frame.width + wallPair.frame.width)
+        let movePillars = SKAction.moveBy(x: -distance - 50, y: 0,
+                                          duration: TimeInterval(0.008 * distance))
+        let removePillars = SKAction.removeFromParent()
+        moveAndRemove = SKAction.sequence([movePillars, removePillars])
+        
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+    } else {
+        
+        if isDead == false{
+            player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
         }
+    
+    }
+    
+    for touch in touches{
+        let location = touch.location(in: self)
+        if isDead==true{
+            if restartBtn.contains(location){
+                if UserDefaults.standard.object(forKey: "highestScore") != nil{
+                    let hscore = UserDefaults.standard.integer(forKey: "highestScore")
+                    if hscore < Int(scoreLbl.text!)!{
+                        UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
+                    }
+                } else {
+                    UserDefaults.standard.set(0, forKey: "highestScore")
+                }
+                restartScene()
+            }
+        } else {
+            if pauseBtn.contains(location){
+                if self.isPaused == false{
+                    self.isPaused=true
+                    pauseBtn.texture = SKTexture(imageNamed: "play")
+                } else {
+                    self.isPaused = false
+                    pauseBtn.texture = SKTexture(imageNamed: "pause")
+                }
+            }
+        }
+    }
+}
         
         override func update(_ currentTime: TimeInterval) {
                 // Called before each frame is rendered
@@ -101,5 +167,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         taptoplayLbl = createTaptoplayLabel()
         self.addChild(taptoplayLbl)
     }
-    
+        
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        if firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
+           secondBody.categoryBitMask == CollisionBitMask.pillarCategory ||
+            firstBody.categoryBitMask == CollisionBitMask.pillarCategory &&
+            secondBody.categoryBitMask == CollisionBitMask.playerCategory ||
+            firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
+            secondBody.categoryBitMask == CollisionBitMask.groundCategory ||
+            firstBody.categoryBitMask == CollisionBitMask.groundCategory &&
+            secondBody.categoryBitMask == CollisionBitMask.playerCategory{
+            
+            enumerateChildNodes(withName: "wallPair", using: ({
+                (node,error) in
+                node.speed = 0
+                self.removeAllActions()
+            }))
+            
+            if isDead == false{
+                isDead = true
+                createRestartBtn()
+                pauseBtn.removeFromParent()
+                self.player.removeAllActions()
+            }
+        } else if firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
+                  secondBody.categoryBitMask == CollisionBitMask.flowerCategory{
+            run(pointSound)
+            score += 1
+            scoreLbl.text = "\(score)"
+            secondBody.node?.removeFromParent()
+        } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory &&
+            secondBody.categoryBitMask == CollisionBitMask.playerCategory{
+            run(pointSound)
+            score += 1
+            scoreLbl.text = "\(score)"
+            firstBody.node?.removeFromParent()
+        }
     }
+    
+    func restartScene(){
+        self.removeAllChildren()
+        self.removeAllActions()
+        isDead = false
+        isGameStarted = false
+        score = 0
+        createScene()
+    }
+}
