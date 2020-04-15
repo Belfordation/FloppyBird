@@ -146,7 +146,7 @@ extension GameScene {
         
         wallPair.zPosition = 1
         
-        let randomPosition = random(min: -200, max: 200)
+        let randomPosition = random(min: -100, max: 100)
         wallPair.position.y = wallPair.position.y + randomPosition
         wallPair.addChild(pointNode)
         

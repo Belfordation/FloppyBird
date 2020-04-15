@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133EB9916DBD45CE6DA34A27 /* Pods_Floppy_Birb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3A9F08FDD6F596A5B26B3 /* Pods_Floppy_Birb.framework */; };
+		445DEA5424476E15007EE194 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 445DEA5324476E15007EE194 /* GoogleService-Info.plist */; };
+		445F148C2447903300781389 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F148B2447903300781389 /* Constants.swift */; };
 		449351922440F74B006BEE33 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449351912440F74B006BEE33 /* GameElements.swift */; };
 		44F083C22440F59900029DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F083C12440F59900029DF2 /* AppDelegate.swift */; };
 		44F083C42440F59900029DF2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 44F083C32440F59900029DF2 /* GameScene.sks */; };
@@ -20,6 +23,12 @@
 		44F083E82440F59C00029DF2 /* Floppy_BirbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F083E72440F59C00029DF2 /* Floppy_BirbUITests.swift */; };
 		44F083F72440F63300029DF2 /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44F083F52440F63300029DF2 /* CoinSound.mp3 */; };
 		44F083F82440F63300029DF2 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 44F083F62440F63300029DF2 /* player.atlas */; };
+		44FA92772447601200EF811D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA92762447601200EF811D /* SignUpViewController.swift */; };
+		44FA92792447601D00EF811D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA92782447601D00EF811D /* LoginViewController.swift */; };
+		44FA927B2447602600EF811D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA927A2447602600EF811D /* HomeViewController.swift */; };
+		44FA927E244761B800EF811D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA927D244761B800EF811D /* ViewController.swift */; };
+		D07C6A0081489916CEE1F1A9 /* Pods_Floppy_BirbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77E7C916A70FCD17E640F1A /* Pods_Floppy_BirbTests.framework */; };
+		F72E902A98C2B0B553229D2D /* Pods_Floppy_Birb_Floppy_BirbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764B038A8959E07F3581519F /* Pods_Floppy_Birb_Floppy_BirbUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18E15C171B9CA13973FEA583 /* Pods-Floppy Birb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb.debug.xcconfig"; path = "Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb.debug.xcconfig"; sourceTree = "<group>"; };
+		445DEA5324476E15007EE194 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		445F148B2447903300781389 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		449351912440F74B006BEE33 /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		44F083BE2440F59800029DF2 /* Floppy Birb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Floppy Birb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F083C12440F59900029DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +71,18 @@
 		44F083E92440F59C00029DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44F083F52440F63300029DF2 /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = CoinSound.mp3; path = ProjectFiles/CoinSound.mp3; sourceTree = SOURCE_ROOT; };
 		44F083F62440F63300029DF2 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = player.atlas; path = ProjectFiles/player.atlas; sourceTree = SOURCE_ROOT; };
+		44FA92762447601200EF811D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		44FA92782447601D00EF811D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		44FA927A2447602600EF811D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		44FA927D244761B800EF811D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49F3A9F08FDD6F596A5B26B3 /* Pods_Floppy_Birb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Floppy_Birb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		764B038A8959E07F3581519F /* Pods_Floppy_Birb_Floppy_BirbUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Floppy_Birb_Floppy_BirbUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A457992EE4CE66732172F /* Pods-Floppy Birb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb.release.xcconfig"; path = "Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb.release.xcconfig"; sourceTree = "<group>"; };
+		A7E998B50E0A2BD39C75F59D /* Pods-Floppy BirbTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy BirbTests.release.xcconfig"; path = "Target Support Files/Pods-Floppy BirbTests/Pods-Floppy BirbTests.release.xcconfig"; sourceTree = "<group>"; };
+		B77E7C916A70FCD17E640F1A /* Pods_Floppy_BirbTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Floppy_BirbTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9816BF5587177F6091EAAF6 /* Pods-Floppy BirbTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy BirbTests.debug.xcconfig"; path = "Target Support Files/Pods-Floppy BirbTests/Pods-Floppy BirbTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DFEDFE5E5A90C5D344BDF221 /* Pods-Floppy Birb-Floppy BirbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb-Floppy BirbUITests.debug.xcconfig"; path = "Target Support Files/Pods-Floppy Birb-Floppy BirbUITests/Pods-Floppy Birb-Floppy BirbUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC299E61DC4D5A0EEC6982A5 /* Pods-Floppy Birb-Floppy BirbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb-Floppy BirbUITests.release.xcconfig"; path = "Target Support Files/Pods-Floppy Birb-Floppy BirbUITests/Pods-Floppy Birb-Floppy BirbUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				133EB9916DBD45CE6DA34A27 /* Pods_Floppy_Birb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07C6A0081489916CEE1F1A9 /* Pods_Floppy_BirbTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +106,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72E902A98C2B0B553229D2D /* Pods_Floppy_Birb_Floppy_BirbUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27E1565FE0B096DAEE10E5C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18E15C171B9CA13973FEA583 /* Pods-Floppy Birb.debug.xcconfig */,
+				8A0A457992EE4CE66732172F /* Pods-Floppy Birb.release.xcconfig */,
+				DFEDFE5E5A90C5D344BDF221 /* Pods-Floppy Birb-Floppy BirbUITests.debug.xcconfig */,
+				EC299E61DC4D5A0EEC6982A5 /* Pods-Floppy Birb-Floppy BirbUITests.release.xcconfig */,
+				B9816BF5587177F6091EAAF6 /* Pods-Floppy BirbTests.debug.xcconfig */,
+				A7E998B50E0A2BD39C75F59D /* Pods-Floppy BirbTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		44F083B52440F59800029DF2 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +133,8 @@
 				44F083DB2440F59C00029DF2 /* Floppy BirbTests */,
 				44F083E62440F59C00029DF2 /* Floppy BirbUITests */,
 				44F083BF2440F59800029DF2 /* Products */,
+				27E1565FE0B096DAEE10E5C1 /* Pods */,
+				9AEDC2C7A9E4E0FA1AE86E33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +151,7 @@
 		44F083C02440F59800029DF2 /* Floppy Birb */ = {
 			isa = PBXGroup;
 			children = (
+				44FA927C2447603000EF811D /* View Controllers */,
 				44F083F52440F63300029DF2 /* CoinSound.mp3 */,
 				44F083F62440F63300029DF2 /* player.atlas */,
 				44F083C12440F59900029DF2 /* AppDelegate.swift */,
@@ -121,6 +164,8 @@
 				44F083CE2440F59C00029DF2 /* Assets.xcassets */,
 				44F083D02440F59C00029DF2 /* LaunchScreen.storyboard */,
 				44F083D32440F59C00029DF2 /* Info.plist */,
+				445DEA5324476E15007EE194 /* GoogleService-Info.plist */,
+				445F148B2447903300781389 /* Constants.swift */,
 			);
 			path = "Floppy Birb";
 			sourceTree = "<group>";
@@ -143,6 +188,27 @@
 			path = "Floppy BirbUITests";
 			sourceTree = "<group>";
 		};
+		44FA927C2447603000EF811D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				44FA927A2447602600EF811D /* HomeViewController.swift */,
+				44FA92782447601D00EF811D /* LoginViewController.swift */,
+				44FA92762447601200EF811D /* SignUpViewController.swift */,
+				44FA927D244761B800EF811D /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9AEDC2C7A9E4E0FA1AE86E33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49F3A9F08FDD6F596A5B26B3 /* Pods_Floppy_Birb.framework */,
+				764B038A8959E07F3581519F /* Pods_Floppy_Birb_Floppy_BirbUITests.framework */,
+				B77E7C916A70FCD17E640F1A /* Pods_Floppy_BirbTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44F083EC2440F59C00029DF2 /* Build configuration list for PBXNativeTarget "Floppy Birb" */;
 			buildPhases = (
+				160D7E9438B70A583C98F38D /* [CP] Check Pods Manifest.lock */,
 				44F083BA2440F59800029DF2 /* Sources */,
 				44F083BB2440F59800029DF2 /* Frameworks */,
 				44F083BC2440F59800029DF2 /* Resources */,
+				A13442404F2AB88ECD5806D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +235,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44F083EF2440F59C00029DF2 /* Build configuration list for PBXNativeTarget "Floppy BirbTests" */;
 			buildPhases = (
+				4CF03DD516576AB9C6895691 /* [CP] Check Pods Manifest.lock */,
 				44F083D42440F59C00029DF2 /* Sources */,
 				44F083D52440F59C00029DF2 /* Frameworks */,
 				44F083D62440F59C00029DF2 /* Resources */,
@@ -185,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44F083F22440F59C00029DF2 /* Build configuration list for PBXNativeTarget "Floppy BirbUITests" */;
 			buildPhases = (
+				83BF897CBCB075A5A53A12A9 /* [CP] Check Pods Manifest.lock */,
 				44F083DF2440F59C00029DF2 /* Sources */,
 				44F083E02440F59C00029DF2 /* Frameworks */,
 				44F083E12440F59C00029DF2 /* Resources */,
+				0E994419EA5FCB0A1157AA0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F083CD2440F59900029DF2 /* Main.storyboard in Resources */,
+				445DEA5424476E15007EE194 /* GoogleService-Info.plist in Resources */,
 				44F083F72440F63300029DF2 /* CoinSound.mp3 in Resources */,
 				44F083C42440F59900029DF2 /* GameScene.sks in Resources */,
 				44F083CF2440F59C00029DF2 /* Assets.xcassets in Resources */,
@@ -273,15 +345,123 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E994419EA5FCB0A1157AA0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb-Floppy BirbUITests/Pods-Floppy Birb-Floppy BirbUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb-Floppy BirbUITests/Pods-Floppy Birb-Floppy BirbUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb-Floppy BirbUITests/Pods-Floppy Birb-Floppy BirbUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		160D7E9438B70A583C98F38D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Floppy Birb-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CF03DD516576AB9C6895691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Floppy BirbTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83BF897CBCB075A5A53A12A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Floppy Birb-Floppy BirbUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A13442404F2AB88ECD5806D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		44F083BA2440F59800029DF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FA92792447601D00EF811D /* LoginViewController.swift in Sources */,
 				449351922440F74B006BEE33 /* GameElements.swift in Sources */,
 				44F083C82440F59900029DF2 /* GameScene.swift in Sources */,
 				44F083CA2440F59900029DF2 /* GameViewController.swift in Sources */,
 				44F083C22440F59900029DF2 /* AppDelegate.swift in Sources */,
+				44FA927B2447602600EF811D /* HomeViewController.swift in Sources */,
+				44FA927E244761B800EF811D /* ViewController.swift in Sources */,
+				44FA92772447601200EF811D /* SignUpViewController.swift in Sources */,
+				445F148C2447903300781389 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +632,7 @@
 		};
 		44F083ED2440F59C00029DF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18E15C171B9CA13973FEA583 /* Pods-Floppy Birb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -471,6 +652,7 @@
 		};
 		44F083EE2440F59C00029DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A0A457992EE4CE66732172F /* Pods-Floppy Birb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -490,6 +672,7 @@
 		};
 		44F083F02440F59C00029DF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9816BF5587177F6091EAAF6 /* Pods-Floppy BirbTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +694,7 @@
 		};
 		44F083F12440F59C00029DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7E998B50E0A2BD39C75F59D /* Pods-Floppy BirbTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -532,6 +716,7 @@
 		};
 		44F083F32440F59C00029DF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFEDFE5E5A90C5D344BDF221 /* Pods-Floppy Birb-Floppy BirbUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -551,6 +736,7 @@
 		};
 		44F083F42440F59C00029DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC299E61DC4D5A0EEC6982A5 /* Pods-Floppy Birb-Floppy BirbUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,6 @@
+framework module Pods_Floppy_Birb_Floppy_BirbUITests {
+  umbrella header "Pods-Floppy Birb-Floppy BirbUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
