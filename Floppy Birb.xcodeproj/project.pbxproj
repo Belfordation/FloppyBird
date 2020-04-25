@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		133EB9916DBD45CE6DA34A27 /* Pods_Floppy_Birb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3A9F08FDD6F596A5B26B3 /* Pods_Floppy_Birb.framework */; };
+		40756498245480EE00CFE072 /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40756497245480EE00CFE072 /* HighscoreViewController.swift */; };
 		445DEA5424476E15007EE194 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 445DEA5324476E15007EE194 /* GoogleService-Info.plist */; };
 		445F148C2447903300781389 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F148B2447903300781389 /* Constants.swift */; };
 		449351922440F74B006BEE33 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449351912440F74B006BEE33 /* GameElements.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		18E15C171B9CA13973FEA583 /* Pods-Floppy Birb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb.debug.xcconfig"; path = "Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb.debug.xcconfig"; sourceTree = "<group>"; };
+		40756497245480EE00CFE072 /* HighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
 		445DEA5324476E15007EE194 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		445F148B2447903300781389 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		449351912440F74B006BEE33 /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				44FA92782447601D00EF811D /* LoginViewController.swift */,
 				44FA92762447601200EF811D /* SignUpViewController.swift */,
 				44FA927D244761B800EF811D /* ViewController.swift */,
+				40756497245480EE00CFE072 /* HighscoreViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				44FA92792447601D00EF811D /* LoginViewController.swift in Sources */,
 				449351922440F74B006BEE33 /* GameElements.swift in Sources */,
 				44F083C82440F59900029DF2 /* GameScene.swift in Sources */,
+				40756498245480EE00CFE072 /* HighscoreViewController.swift in Sources */,
 				44F083CA2440F59900029DF2 /* GameViewController.swift in Sources */,
 				44F083C22440F59900029DF2 /* AppDelegate.swift in Sources */,
 				44FA927B2447602600EF811D /* HomeViewController.swift in Sources */,

@@ -45,7 +45,16 @@ extension GameScene {
         pauseBtn.zPosition = 6
         self.addChild(pauseBtn)
     }
-
+    
+    func createRankingBtn(){
+        rankingBtn = SKSpriteNode(imageNamed: "pause")
+        rankingBtn.size = CGSize(width: 40, height: 40)
+        rankingBtn.position = CGPoint(x: self.frame.width - 60, y: 30)
+        rankingBtn.zPosition = 6
+        self.addChild(rankingBtn)
+    }
+    
+    
     func createScoreLabel() -> SKLabelNode {
         let scoreLbl = SKLabelNode()
         scoreLbl.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 + self.frame.height/2.6)

@@ -15,5 +15,6 @@ struct Constants{
         
         static let homeViewController = "HomeVC"
         static let gameViewController = "GameVC"
+        static let highscoreViewController = "HighscoreVC"
     }
 }
