@@ -8,6 +8,9 @@
 
 import SpriteKit
 import GameplayKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     
@@ -212,6 +215,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func restartScene(){
+        let hscoreDB = UserDefaults.standard.integer(forKey: "highestScore")
+        
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        let doc = db.collection("users").document((user)!)
+        
+        doc.updateData(["highscoreMedium" : hscoreDB])
+        
+        print(user)
+        print(hscoreDB)
+
+        
+        db.collection("users").document((user)!).updateData(["username": "test"])
+       
+        
         self.removeAllChildren()
         self.removeAllActions()
         isDead = false

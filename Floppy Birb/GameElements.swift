@@ -1,4 +1,9 @@
 import SpriteKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
+import FirebaseDatabase
+
 
 struct CollisionBitMask {
     static let playerCategory:UInt32 = 0x1 << 0
@@ -8,6 +13,11 @@ struct CollisionBitMask {
 }
 
 extension GameScene {
+    
+    
+    
+    
+    
     func createPlayer() -> SKSpriteNode {
             //1
             let player = SKSpriteNode(texture: SKTextureAtlas(named:"player").textureNamed("floppy1"))
@@ -36,6 +46,10 @@ extension GameScene {
         restartBtn.setScale(0)
         self.addChild(restartBtn)
         restartBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        
+        
+        
+        
     }
     
     func createPauseBtn(){
@@ -62,6 +76,8 @@ extension GameScene {
         scoreLbl.zPosition = 5
         scoreLbl.fontSize = 50
         scoreLbl.fontName = "HelveticaNeue-Bold"
+        
+        
         
         let scoreBg = SKShapeNode()
         scoreBg.position = CGPoint(x: 0, y: 0)

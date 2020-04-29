@@ -12,6 +12,7 @@ target 'Floppy Birb' do
   pod 'Firebase/Auth' 
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
 
   target 'Floppy BirbTests' do
     inherit! :search_paths
