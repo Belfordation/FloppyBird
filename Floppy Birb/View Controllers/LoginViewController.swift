@@ -47,9 +47,9 @@ class LoginViewController: UIViewController {
             }
             else{
                 
-                let gameViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.gameViewController) as? GameViewController
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
                 
-                self.view.window?.rootViewController = gameViewController
+                self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
                 
             }

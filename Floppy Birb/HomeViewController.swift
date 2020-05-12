@@ -18,8 +18,17 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var highscoreBtn: UIButton!
     
-    let levels = ["Easy", "Medium", "Hard"]
-    let themes = ["Earth", "Moon", "Hell"]
+   
+    var levels = [] as [String]
+    var themes = [] as [String]
+    var levelPicked: String = ""
+    var themePicked: String = ""
+    
+    
+    
+    
+    //let levels = ["Easy", "Medium", "Hard"]
+    //let themes = ["Earth", "Moon", "Hell"]
     
     var background = UIImage(named: "earthbg.png")
     
@@ -31,6 +40,11 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         diffPicker.dataSource = self
         diffPicker.delegate = self
         
+         levels = ["Easy", "Medium", "Hard"]
+         themes = ["Earth", "Moon", "Hell"]
+        
+        
+        
         self.view.backgroundColor = UIColor(patternImage: background!)
         // Do any additional setup after loading the view.
     }
@@ -41,9 +55,12 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if diffPicker == pickerView {
+            levelPicked = levels[row]
             return levels[row]
+            
         }
         if themePicker == pickerView {
+            themePicked = themes[row]
             return themes[row]
         }
         return ""
@@ -63,21 +80,29 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         if diffPicker == pickerView {
             label.text = levels[row]
+            self.levelPicked = levels[row]
+            print(levelPicked)
+            UserDefaults.standard.set(levelPicked, forKey: "level")
         }
         if themePicker == pickerView {
             
             
-            //NIE DZIAŁA
-            let pickedTheme = pickerView.selectedRow(inComponent: 1)
+            
+            let pickedTheme = pickerView.selectedRow(inComponent: 0)
             
             if pickedTheme == 0 {
-                background = UIImage(named: "earthbg.png")
+               self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
+                
+                
             }
             if pickedTheme == 1 {
-                background = UIImage(named: "moonbg.png")
+                //background = UIImage(named: "moonbg.png")
+                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spacebg.png")!)
+                
             }
             if pickedTheme == 2 {
-                background = UIImage(named: "hellbg.png")
+                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "hellbg.png")!)
+                
             }
         }
     }
@@ -87,12 +112,16 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let highscoreViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.highscoreViewController) as? HighscoreViewController
         
         self.view.window?.rootViewController = highscoreViewController
+        view.window?.makeKeyAndVisible()
         
     }
     
     @IBAction func playTapped(_ sender: Any){
         let gameViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.gameViewController) as? GameViewController
-        
+        print(levelPicked)
         self.view.window?.rootViewController = gameViewController
+        view.window?.makeKeyAndVisible()
     }
+    
+   
 }

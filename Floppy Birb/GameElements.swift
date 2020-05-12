@@ -129,7 +129,7 @@ extension GameScene {
     func createWalls() -> SKNode{
         let pointNode = SKSpriteNode(imageNamed: "file")
         pointNode.size = CGSize(width: 40, height: 40)
-        pointNode.position = CGPoint(x: self.frame.width+25, y: self.frame.height/2)
+        pointNode.position = CGPoint(x: self.frame.width+50, y: self.frame.height/2)
         pointNode.physicsBody = SKPhysicsBody(rectangleOf: pointNode.size)
         pointNode.physicsBody?.affectedByGravity = false
         pointNode.physicsBody?.isDynamic = false

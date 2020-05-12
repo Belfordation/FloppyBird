@@ -13,7 +13,8 @@ import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
     
-    
+    var vc = HomeViewController()
+   
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -36,7 +37,7 @@ class SignUpViewController: UIViewController {
     }
     
     func validateFields() -> String?{
-        
+         
         //check if fields are not empty
         
         if nicknameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||

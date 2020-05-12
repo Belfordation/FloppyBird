@@ -17,7 +17,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var isGameStarted = Bool(false)
     var isDead = Bool(false)
     let pointSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
+    
+    
 
+   
+    
+    
+    
+    
+    
     var score = Int(0)
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
@@ -66,19 +74,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
         self.run(spawnDelayForever)
         
+        
+        
+        
+        let levelFinal = UserDefaults.standard.string(forKey: "level")
+        
+        
+        var interval: CGFloat = 0
+        
+        if levelFinal == "Easy"{
+            interval = 0.005
+        }
+        else if levelFinal == "Medium"{
+            interval = 0.008
+        }
+        else if levelFinal == "Hard"{
+            interval = 0.015
+        }
+        
         let distance = CGFloat(self.frame.width + wallPair.frame.width)
         let movePillars = SKAction.moveBy(x: -distance - 50, y: 0,
-                                          duration: TimeInterval(0.008 * distance))
+                                          duration: TimeInterval(interval * distance))
         let removePillars = SKAction.removeFromParent()
         moveAndRemove = SKAction.sequence([movePillars, removePillars])
         
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+        player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 50))
     } else {
         
         if isDead == false{
             player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+            player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 50))
         }
     
     }
@@ -171,12 +197,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         taptoplayLbl = createTaptoplayLabel()
         self.addChild(taptoplayLbl)
         
-        createRestartBtn()
+        
     }
         
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
+        
+        
         
         if firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
            secondBody.categoryBitMask == CollisionBitMask.pillarCategory ||
@@ -222,9 +250,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let doc = db.collection("users").document((user)!)
         
         doc.updateData(["highscoreMedium" : hscoreDB])
-        
-        print(user)
-        print(hscoreDB)
+
+//        print(user)
+//        print(hscoreDB)
 
         
         db.collection("users").document((user)!).updateData(["username": "test"])
@@ -235,6 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         isDead = false
         isGameStarted = false
         score = 0
+        print(UserDefaults.standard.string(forKey: "level"))
         createScene()
     }
 }
