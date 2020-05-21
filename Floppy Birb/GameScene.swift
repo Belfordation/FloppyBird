@@ -18,14 +18,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var isDead = Bool(false)
     let pointSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
     
-    
-
-   
-    
-    
-    
-    
-    
     var score = Int(0)
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
@@ -35,7 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var logoImg = SKSpriteNode()
     var wallPair = SKNode()
     var moveAndRemove = SKAction()
-    var rankingBtn = SKSpriteNode()
+    
+    var backBtn = SKSpriteNode()
 
     //CREATE THE BIRD ATLAS FOR ANIMATION
     let playerAtlas = SKTextureAtlas(named:"player")
@@ -46,6 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     
     override func didMove(to view: SKView) {
+        
         createScene()
     }
         
@@ -78,6 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         
         let levelFinal = UserDefaults.standard.string(forKey: "level")
+        
         
         
         var interval: CGFloat = 0
@@ -122,6 +117,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     UserDefaults.standard.set(0, forKey: "highestScore")
                 }
                 restartScene()
+            } else if backBtn.contains(location){
+                
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+                let controller2 = self.view!.window?.rootViewController?.presentedViewController
+                controller2?.present(controller, animated: true, completion: nil)
             }
         } else {
             if pauseBtn.contains(location){
@@ -160,24 +161,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
        self.physicsBody?.isDynamic = false
        self.physicsBody?.affectedByGravity = false
 
+        let themeFinal = UserDefaults.standard.integer(forKey: "theme")
+        playerSprites.removeAll()
+        
        self.physicsWorld.contactDelegate = self
        self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         
         for i in 0..<2 {
-                    let background = SKSpriteNode(imageNamed: "earthbg")
+            
+            var background = SKSpriteNode(imageNamed: "earthbg")
+            
+            if(themeFinal == 1) {
+                background = SKSpriteNode(imageNamed: "spacebg")
+                playerSprites.append(playerAtlas.textureNamed("space1"))
+                playerSprites.append(playerAtlas.textureNamed("space2"))
+                playerSprites.append(playerAtlas.textureNamed("space3"))
+                playerSprites.append(playerAtlas.textureNamed("space4"))
+            } else if(themeFinal == 2) {
+                background = SKSpriteNode(imageNamed: "hellbg")
+                playerSprites.append(playerAtlas.textureNamed("devil1"))
+                playerSprites.append(playerAtlas.textureNamed("devil2"))
+                playerSprites.append(playerAtlas.textureNamed("devil3"))
+                playerSprites.append(playerAtlas.textureNamed("devil4"))
+            } else {
+                background = SKSpriteNode(imageNamed: "earthbg")
+                playerSprites.append(playerAtlas.textureNamed("floppy1"))
+                playerSprites.append(playerAtlas.textureNamed("floppy2"))
+                playerSprites.append(playerAtlas.textureNamed("floppy3"))
+                playerSprites.append(playerAtlas.textureNamed("floppy4"))
+            }
                     background.anchorPoint = CGPoint.init(x: 0, y: 0)
                     background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
                     background.name = "background"
                     background.size = (self.view?.bounds.size)!
                     self.addChild(background)
-    
-        
         }
         //SET UP THE PLAYER SPRITES FOR ANIMATION
-        playerSprites.append(playerAtlas.textureNamed("floppy1"))
-        playerSprites.append(playerAtlas.textureNamed("floppy2"))
-        playerSprites.append(playerAtlas.textureNamed("floppy3"))
-        playerSprites.append(playerAtlas.textureNamed("floppy4"))
+
         
         self.player = createPlayer()
         self.addChild(player)
@@ -224,6 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             if isDead == false{
                 isDead = true
                 createRestartBtn()
+                createBackBtn()
                 pauseBtn.removeFromParent()
                 self.player.removeAllActions()
             }
@@ -263,7 +284,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         isDead = false
         isGameStarted = false
         score = 0
-        print(UserDefaults.standard.string(forKey: "level"))
         createScene()
     }
 }

@@ -165,8 +165,8 @@
 				449351912440F74B006BEE33 /* GameElements.swift */,
 				44F083CB2440F59900029DF2 /* Main.storyboard */,
 				44F083CE2440F59C00029DF2 /* Assets.xcassets */,
-				44F083D02440F59C00029DF2 /* LaunchScreen.storyboard */,
 				44F083D32440F59C00029DF2 /* Info.plist */,
+				44F083D02440F59C00029DF2 /* LaunchScreen.storyboard */,
 				445DEA5324476E15007EE194 /* GoogleService-Info.plist */,
 				445F148B2447903300781389 /* Constants.swift */,
 			);

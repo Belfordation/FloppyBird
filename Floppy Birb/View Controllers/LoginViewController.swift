@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
         setUpElements()
         
     }

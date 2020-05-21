@@ -59,15 +59,15 @@ extension GameScene {
         pauseBtn.zPosition = 6
         self.addChild(pauseBtn)
     }
+
     
-    func createRankingBtn(){
-        rankingBtn = SKSpriteNode(imageNamed: "pause")
-        rankingBtn.size = CGSize(width: 40, height: 40)
-        rankingBtn.position = CGPoint(x: self.frame.width - 60, y: 30)
-        rankingBtn.zPosition = 6
-        self.addChild(rankingBtn)
+    func createBackBtn(){
+        backBtn = SKSpriteNode(imageNamed: "pause")
+        backBtn.size = CGSize(width: 80, height: 80)
+        backBtn.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 120)
+        backBtn.zPosition = 6
+        self.addChild(backBtn)
     }
-    
     
     func createScoreLabel() -> SKLabelNode {
         let scoreLbl = SKLabelNode()
@@ -140,9 +140,27 @@ extension GameScene {
         
         wallPair = SKNode()
         wallPair.name = "wallPair"
+        
+        
             
-        let topWall = SKSpriteNode(imageNamed: "pillar")
-        let btmWall = SKSpriteNode(imageNamed: "pillar")
+        var topWall = SKSpriteNode(imageNamed: "pillar")
+        var btmWall = SKSpriteNode(imageNamed: "pillar")
+        
+        let themeFinal = UserDefaults.standard.integer(forKey: "theme")
+        
+        if(themeFinal == 0){
+            topWall = SKSpriteNode(imageNamed: "pillar")
+            btmWall = SKSpriteNode(imageNamed: "pillar")
+        } else if(themeFinal == 1){
+            topWall = SKSpriteNode(imageNamed: "spacepillar")
+            btmWall = SKSpriteNode(imageNamed: "spacepillar")
+        } else if(themeFinal == 2){
+            topWall = SKSpriteNode(imageNamed: "hellpillar")
+            btmWall = SKSpriteNode(imageNamed: "hellpillar")
+        } else {
+            topWall = SKSpriteNode(imageNamed: "pillar")
+            btmWall = SKSpriteNode(imageNamed: "pillar")
+        }
         
         topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + 420)
         btmWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 - 420)

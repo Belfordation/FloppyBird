@@ -24,12 +24,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var levelPicked: String = ""
     var themePicked: String = ""
     
-    
-    
-    
-    //let levels = ["Easy", "Medium", "Hard"]
-    //let themes = ["Earth", "Moon", "Hell"]
-    
     var background = UIImage(named: "earthbg.png")
     
     
@@ -89,6 +83,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             
             let pickedTheme = pickerView.selectedRow(inComponent: 0)
+            UserDefaults.standard.set(pickedTheme, forKey: "theme")
             
             if pickedTheme == 0 {
                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
