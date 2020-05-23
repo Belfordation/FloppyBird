@@ -36,9 +36,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var player = SKSpriteNode()
     var repeatActionPlayer = SKAction()
     
+    let levelFinal = UserDefaults.standard.string(forKey: "level")
     
+    let user = Auth.auth().currentUser?.uid
+    let db = Firestore.firestore()
     
     override func didMove(to view: SKView) {
+        
+        
         
         createScene()
     }
@@ -71,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         
         
-        let levelFinal = UserDefaults.standard.string(forKey: "level")
+        
         
         
         
@@ -108,21 +113,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let location = touch.location(in: self)
         if isDead==true{
             if restartBtn.contains(location){
-                if UserDefaults.standard.object(forKey: "highestScore") != nil{
-                    let hscore = UserDefaults.standard.integer(forKey: "highestScore")
-                    if hscore < Int(scoreLbl.text!)!{
-                        UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
-                    }
-                } else {
-                    UserDefaults.standard.set(0, forKey: "highestScore")
-                }
-                restartScene()
-            } else if backBtn.contains(location){
+                let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+                    
+                    if (levelFinal == "Easy"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    let highscore = document.data()["highscoreEasy"] as! Int
+                                    print(highscore)
+                                }
+                            }
+                        }
+                    } else if (levelFinal == "Medium"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    let highscore = document.data()["highscoreMedium"] as! Int
+                                        print(highscore)
+                                }
+                            }
+                        }
                 
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-                let controller2 = self.view!.window?.rootViewController?.presentedViewController
-                controller2?.present(controller, animated: true, completion: nil)
+                    } else if (levelFinal == "Hard"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    let highscore = document.data()["highscoreHard"] as? String
+                                        print(highscore)
+                                }
+                            }
+                        }
+                    }
+                restartScene()
             }
         } else {
             if pauseBtn.contains(location){
@@ -209,9 +237,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scoreLbl = createScoreLabel()
         self.addChild(scoreLbl)
         
-        highscoreLbl = createHighscoreLabel()
-        self.addChild(highscoreLbl)
-        
         createLogo()
         
         taptoplayLbl = createTaptoplayLabel()
@@ -264,20 +289,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func restartScene(){
-        let hscoreDB = UserDefaults.standard.integer(forKey: "highestScore")
-        
-        let user = Auth.auth().currentUser?.uid
-        let db = Firestore.firestore()
-        let doc = db.collection("users").document((user)!)
-        
-        doc.updateData(["highscoreMedium" : hscoreDB])
-
-//        print(user)
-//        print(hscoreDB)
-
-        
-        db.collection("users").document((user)!).updateData(["username": "test"])
-       
         
         self.removeAllChildren()
         self.removeAllActions()

@@ -91,10 +91,10 @@ class SignUpViewController: UIViewController {
                     //user created succesfully, store information in database
                     
                     let db = Firestore.firestore()
+                    let userUID = result?.user.uid
                     
                     
-                    
-                    db.collection("users").document((result?.user.uid)!).setData(["username":username, "points":0, "hellThemeUnlocked":false, "spaceThemeUnlocked":false, "highscoreEasy":0, "highscoreMedium":0, "highscoreHard":0]) { (error) in
+                    db.collection("users").document((result?.user.uid)!).setData(["id": userUID as Any, "username":username, "points":0, "hellThemeUnlocked":false, "spaceThemeUnlocked":false, "highscoreEasy":0, "highscoreMedium":0, "highscoreHard":0]) { (error) in
                         
                         if error != nil {
                             //show error

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
 import FirebaseDatabase
 
 class HighscoreViewController: UIViewController {
@@ -18,17 +21,30 @@ class HighscoreViewController: UIViewController {
     @IBOutlet weak var hardNickname: UILabel!
     @IBOutlet weak var hardScore: UILabel!
     
-    var ref:DatabaseReference?
+    let user = Auth.auth().currentUser?.uid
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference().child("highscores")
+        let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
         
-        ref?.observe(.childAdded, with: {snapshot in
-            
-            self.easyScore.text = snapshot.value as? String
-            
-        })
+        doc.getDocuments{ (snapshot, error) in
+            if error != nil{
+                print(error)
+            } else {
+                for document in (snapshot?.documents)! {
+                    let easyHighscore = document.data()["highscoreEasy"] as! Int
+                    let mediumHighscore = document.data()["highscoreMedium"] as! Int
+                    let hardHighscore = document.data()["highscoreHard"] as! Int
+                    
+                    self.easyScore.text = String(easyHighscore)
+                    self.mediumScore.text = String(mediumHighscore)
+                    self.hardScore.text = String(hardHighscore)
+                }
+            }
+        }
+        
+
     }
 }

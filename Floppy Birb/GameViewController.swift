@@ -11,6 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    @IBOutlet weak var btnToMenu: UIButton!
     
     var levelFinal = ""
 
@@ -26,6 +27,15 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
             
         }
+    
+    @IBAction func btnToMenuTapped(_sender: Any){
+    
+    
+    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+    
+    self.view.window?.rootViewController = homeViewController
+    view.window?.makeKeyAndVisible()
+    }
      
        override var shouldAutorotate: Bool {
             return false
@@ -47,4 +57,4 @@ class GameViewController: UIViewController {
         override var prefersStatusBarHidden: Bool {
             return true
         }
-    }
+}
