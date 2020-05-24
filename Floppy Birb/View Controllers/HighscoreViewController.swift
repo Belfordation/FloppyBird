@@ -14,11 +14,11 @@ import FirebaseDatabase
 
 class HighscoreViewController: UIViewController {
     
-    @IBOutlet weak var easyNickname: UILabel!
+    
     @IBOutlet weak var easyScore: UILabel!
-    @IBOutlet weak var mediumNickname: UILabel!
+    @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var mediumScore: UILabel!
-    @IBOutlet weak var hardNickname: UILabel!
+   
     @IBOutlet weak var hardScore: UILabel!
     
     let user = Auth.auth().currentUser?.uid
@@ -37,10 +37,12 @@ class HighscoreViewController: UIViewController {
                     let easyHighscore = document.data()["highscoreEasy"] as! Int
                     let mediumHighscore = document.data()["highscoreMedium"] as! Int
                     let hardHighscore = document.data()["highscoreHard"] as! Int
+                    let nicknameDB = document.data()["username"] as! String
                     
                     self.easyScore.text = String(easyHighscore)
                     self.mediumScore.text = String(mediumHighscore)
                     self.hardScore.text = String(hardHighscore)
+                    self.nickname.text = String(nicknameDB)+"'s Scores:"
                 }
             }
         }

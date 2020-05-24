@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
-        UserDefaults.standard.removeObject(forKey: "level")
+        
 
     setUpElements()
               }

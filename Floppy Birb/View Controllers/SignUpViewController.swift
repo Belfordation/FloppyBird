@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
                     let userUID = result?.user.uid
                     
                     
-                    db.collection("users").document((result?.user.uid)!).setData(["id": userUID as Any, "username":username, "points":0, "hellThemeUnlocked":false, "spaceThemeUnlocked":false, "highscoreEasy":0, "highscoreMedium":0, "highscoreHard":0]) { (error) in
+                    db.collection("users").document((result?.user.uid)!).setData(["id": userUID as Any, "username":username, "points":"0", "hellThemeUnlocked":false, "spaceThemeUnlocked":false, "highscoreEasy":"0", "highscoreMedium":"0", "highscoreHard":"0"]) { (error) in
                         
                         if error != nil {
                             //show error

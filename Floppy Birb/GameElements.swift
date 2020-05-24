@@ -61,13 +61,13 @@ extension GameScene {
     }
 
     
-    func createBackBtn(){
-        backBtn = SKSpriteNode(imageNamed: "pause")
-        backBtn.size = CGSize(width: 80, height: 80)
-        backBtn.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 120)
-        backBtn.zPosition = 6
-        self.addChild(backBtn)
-    }
+//    func createBackBtn(){
+//        backBtn = SKSpriteNode(imageNamed: "pause")
+//        backBtn.size = CGSize(width: 80, height: 80)
+//        backBtn.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 120)
+//        backBtn.zPosition = 6
+//        self.addChild(backBtn)
+//    }
     
     func createScoreLabel() -> SKLabelNode {
         let scoreLbl = SKLabelNode()

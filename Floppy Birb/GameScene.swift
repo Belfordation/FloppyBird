@@ -113,43 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let location = touch.location(in: self)
         if isDead==true{
             if restartBtn.contains(location){
-                let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
-                    
-                    if (levelFinal == "Easy"){
-                        doc.getDocuments{ (snapshot, error) in
-                            if error != nil{
-                                print(error)
-                            } else {
-                                for document in (snapshot?.documents)! {
-                                    let highscore = document.data()["highscoreEasy"] as! Int
-                                    print(highscore)
-                                }
-                            }
-                        }
-                    } else if (levelFinal == "Medium"){
-                        doc.getDocuments{ (snapshot, error) in
-                            if error != nil{
-                                print(error)
-                            } else {
-                                for document in (snapshot?.documents)! {
-                                    let highscore = document.data()["highscoreMedium"] as! Int
-                                        print(highscore)
-                                }
-                            }
-                        }
                 
-                    } else if (levelFinal == "Hard"){
-                        doc.getDocuments{ (snapshot, error) in
-                            if error != nil{
-                                print(error)
-                            } else {
-                                for document in (snapshot?.documents)! {
-                                    let highscore = document.data()["highscoreHard"] as? String
-                                        print(highscore)
-                                }
-                            }
-                        }
-                    }
                 restartScene()
             }
         } else {
@@ -182,6 +146,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 }
         }
     func createScene(){
+        
+        let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            
+            if (levelFinal == "Easy"){
+                doc.getDocuments{ (snapshot, error) in
+                    if error != nil{
+                        print(error)
+                    } else {
+                        for document in (snapshot?.documents)! {
+                            let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
+                            print("Baza highscoreEasy: \(highscore)")
+                            
+                            
+                        }
+                    }
+                }
+            } else if (levelFinal == "Medium"){
+                doc.getDocuments{ (snapshot, error) in
+                    if error != nil{
+                        print(error)
+                    } else {
+                        for document in (snapshot?.documents)! {
+                            let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
+                                print(highscore)
+                        }
+                    }
+                }
+        
+            } else if (levelFinal == "Hard"){
+                doc.getDocuments{ (snapshot, error) in
+                    if error != nil{
+                        print(error)
+                    } else {
+                        for document in (snapshot?.documents)! {
+                            let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
+                                print(highscore)
+                        }
+                    }
+                }
+            }
        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
        self.physicsBody?.categoryBitMask = CollisionBitMask.groundCategory
        self.physicsBody?.collisionBitMask = CollisionBitMask.playerCategory
@@ -267,9 +271,68 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             }))
             
             if isDead == false{
+                let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+                    
+                    if (levelFinal == "Easy"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    let scoreToDb = self.scoreLbl.text!
+                                    let highscoreEasy = (document.data()["highscoreEasy"] as! NSString).intValue
+                                    if(Int(scoreToDb)! > highscoreEasy)
+                                    {
+                                        
+//                                        print(scoreToDb)
+//                                        print(highscore)
+                                        self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreEasy": scoreToDb])
+                                }
+                            }
+                        }
+                    }
+                    }else if (levelFinal == "Medium"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    //let highscore = document.data()["highscoreMedium"] as! Int
+                                         let scoreToDb = self.scoreLbl.text!
+                                         let highscoreMedium = (document.data()["highscoreMedium"] as! NSString).intValue
+                                         if(Int(scoreToDb)! > highscoreMedium){
+                                                                                
+                                        //print(scoreToDb)
+                                        //print(highscore)
+                                        self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreMedium": scoreToDb])
+                                  }
+                                }
+                            }
+                        }
+                
+                    } else if (levelFinal == "Hard"){
+                        doc.getDocuments{ (snapshot, error) in
+                            if error != nil{
+                                print(error)
+                            } else {
+                                for document in (snapshot?.documents)! {
+                                    let scoreToDb = self.scoreLbl.text!
+                                     let highscoreHard = (document.data()["highscoreHard"] as! NSString).intValue
+                                     if(Int(scoreToDb)! > highscoreHard) {
+                                                                                    
+                                    //print(scoreToDb)
+                                    //print(highscore)
+                                    self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreHard": scoreToDb])
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    
+                
                 isDead = true
                 createRestartBtn()
-                createBackBtn()
+              //  createBackBtn()
                 pauseBtn.removeFromParent()
                 self.player.removeAllActions()
             }

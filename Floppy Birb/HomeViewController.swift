@@ -29,10 +29,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         themePicker.dataSource = self
         themePicker.delegate = self
+        
         diffPicker.dataSource = self
         diffPicker.delegate = self
+        diffPicker.selectRow(0, inComponent: 0, animated: true)
+        
+        
         
          levels = ["Easy", "Medium", "Hard"]
          themes = ["Earth", "Moon", "Hell"]
@@ -40,6 +45,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         
         self.view.backgroundColor = UIColor(patternImage: background!)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -76,7 +82,13 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             label.text = levels[row]
             self.levelPicked = levels[row]
             print(levelPicked)
-            UserDefaults.standard.set(levelPicked, forKey: "level")
+            
+       
+                
+                UserDefaults.standard.set(levelPicked, forKey: "level")
+           
+            
+            
         }
         if themePicker == pickerView {
             
@@ -90,19 +102,24 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 
             }
-            if pickedTheme == 1 {
+            else if pickedTheme == 1 {
                 //background = UIImage(named: "moonbg.png")
                 self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spacebg.png")!)
                 
             }
-            if pickedTheme == 2 {
+            else if pickedTheme == 2 {
                 self.view.backgroundColor = UIColor(patternImage: UIImage(named: "hellbg.png")!)
                 
+            }
+            else{
+                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
             }
         }
     }
     
     @IBAction func highscoreTapped(_ sender: Any){
+        
+        
         
         let highscoreViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.highscoreViewController) as? HighscoreViewController
         
@@ -112,6 +129,12 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     @IBAction func playTapped(_ sender: Any){
+        
+        if(self.label.text == "Choose Difficulty"){
+            
+            UserDefaults.standard.set("Medium", forKey: "level")
+        }
+        
         let gameViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.gameViewController) as? GameViewController
         print(levelPicked)
         self.view.window?.rootViewController = gameViewController
