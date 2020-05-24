@@ -20,18 +20,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
-        setUpElements()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
         
+        setUpElements()
     }
-            
             func setUpElements(){
-                
-                //hide error label
                 errorLabel.alpha = 0
-                
-                
-           
         }
 
     @IBAction func loginTapped(_ sender: Any) {

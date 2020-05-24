@@ -25,7 +25,8 @@ class HighscoreViewController: UIViewController {
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
+        
         
         let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
         
@@ -34,19 +35,21 @@ class HighscoreViewController: UIViewController {
                 print(error)
             } else {
                 for document in (snapshot?.documents)! {
-                    let easyHighscore = document.data()["highscoreEasy"] as! Int
-                    let mediumHighscore = document.data()["highscoreMedium"] as! Int
-                    let hardHighscore = document.data()["highscoreHard"] as! Int
+                    let easyHighscore = document.data()["highscoreEasy"] as! String
+                    let mediumHighscore = document.data()["highscoreMedium"] as! String
+                    let hardHighscore = document.data()["highscoreHard"] as! String
                     let nicknameDB = document.data()["username"] as! String
                     
-                    self.easyScore.text = String(easyHighscore)
-                    self.mediumScore.text = String(mediumHighscore)
-                    self.hardScore.text = String(hardHighscore)
+                    self.easyScore.text = easyHighscore
+                    self.mediumScore.text = mediumHighscore
+                    self.hardScore.text = hardHighscore
                     self.nickname.text = String(nicknameDB)+"'s Scores:"
                 }
             }
         }
         
+        super.viewDidLoad()
 
     }
 }
+

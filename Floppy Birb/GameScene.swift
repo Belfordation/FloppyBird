@@ -74,12 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.run(spawnDelayForever)
         
         
-        
-        
-        
-        
-        
-        
         var interval: CGFloat = 0
         
         if levelFinal == "Easy"{
@@ -93,8 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         let distance = CGFloat(self.frame.width + wallPair.frame.width)
-        let movePillars = SKAction.moveBy(x: -distance - 50, y: 0,
-                                          duration: TimeInterval(interval * distance))
+        let movePillars = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(interval * distance))
         let removePillars = SKAction.removeFromParent()
         moveAndRemove = SKAction.sequence([movePillars, removePillars])
         
@@ -113,7 +106,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let location = touch.location(in: self)
         if isDead==true{
             if restartBtn.contains(location){
-                
                 restartScene()
             }
         } else {
@@ -130,21 +122,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
 }
         
-        override func update(_ currentTime: TimeInterval) {
-                // Called before each frame is rendered
-                if isGameStarted == true{
-                    if isDead == false{
-                        enumerateChildNodes(withName: "background", using: ({
-                            (node, error) in
-                            let bg = node as! SKSpriteNode
-                            bg.position = CGPoint(x: bg.position.x - 2, y: bg.position.y)
-                            if bg.position.x <= -bg.size.width {
-                                bg.position = CGPoint(x:bg.position.x + bg.size.width * 2, y:bg.position.y)
-                            }
-                        }))
-                    }
+    override func update(_ currentTime: TimeInterval) {
+            if isGameStarted == true{
+                if isDead == false{
+                    enumerateChildNodes(withName: "background", using: ({
+                        (node, error) in
+                        let bg = node as! SKSpriteNode
+                        bg.position = CGPoint(x: bg.position.x - 2, y: bg.position.y)
+                        if bg.position.x <= -bg.size.width {
+                            bg.position = CGPoint(x:bg.position.x + bg.size.width * 2, y:bg.position.y)
+                        }
+                    }))
                 }
-        }
+            }
+    }
     func createScene(){
         
         let doc = db.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
@@ -228,13 +219,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     background.size = (self.view?.bounds.size)!
                     self.addChild(background)
         }
-        //SET UP THE PLAYER SPRITES FOR ANIMATION
-
         
         self.player = createPlayer()
         self.addChild(player)
                 
-        //PREPARE TO ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
         let animatePlayer = SKAction.animate(with: self.playerSprites as! [SKTexture], timePerFrame: 0.1)
         self.repeatActionPlayer = SKAction.repeatForever(animatePlayer)
         
@@ -245,15 +233,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         taptoplayLbl = createTaptoplayLabel()
         self.addChild(taptoplayLbl)
-        
-        
     }
         
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
-        
-        
         
         if firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
            secondBody.categoryBitMask == CollisionBitMask.pillarCategory ||
@@ -283,10 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                                     let highscoreEasy = (document.data()["highscoreEasy"] as! NSString).intValue
                                     if(Int(scoreToDb)! > highscoreEasy)
                                     {
-                                        
-//                                        print(scoreToDb)
-//                                        print(highscore)
-                                        self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreEasy": scoreToDb])
+                                    self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreEasy": scoreToDb])
                                 }
                             }
                         }
@@ -301,14 +282,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                                          let scoreToDb = self.scoreLbl.text!
                                          let highscoreMedium = (document.data()["highscoreMedium"] as! NSString).intValue
                                          if(Int(scoreToDb)! > highscoreMedium){
-                                                                                
-                                        //print(scoreToDb)
-                                        //print(highscore)
                                         self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreMedium": scoreToDb])
-                                  }
+                                            }
+                                        }
+                                    }
                                 }
-                            }
-                        }
                 
                     } else if (levelFinal == "Hard"){
                         doc.getDocuments{ (snapshot, error) in
@@ -319,20 +297,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                                     let scoreToDb = self.scoreLbl.text!
                                      let highscoreHard = (document.data()["highscoreHard"] as! NSString).intValue
                                      if(Int(scoreToDb)! > highscoreHard) {
-                                                                                    
-                                    //print(scoreToDb)
-                                    //print(highscore)
                                     self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreHard": scoreToDb])
                                       }
                                     }
                                 }
                             }
                         }
-                    
-                
                 isDead = true
                 createRestartBtn()
-              //  createBackBtn()
                 pauseBtn.removeFromParent()
                 self.player.removeAllActions()
             }
@@ -352,7 +324,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func restartScene(){
-        
         self.removeAllChildren()
         self.removeAllActions()
         isDead = false
@@ -361,3 +332,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         createScene()
     }
 }
+

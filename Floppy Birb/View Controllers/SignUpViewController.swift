@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
         setUpElements()
           }
         
@@ -130,3 +130,4 @@ class SignUpViewController: UIViewController {
         
     }
 }
+

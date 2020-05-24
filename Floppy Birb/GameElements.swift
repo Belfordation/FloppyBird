@@ -14,10 +14,6 @@ struct CollisionBitMask {
 
 extension GameScene {
     
-    
-    
-    
-    
     func createPlayer() -> SKSpriteNode {
             //1
             let player = SKSpriteNode(texture: SKTextureAtlas(named:"player").textureNamed("floppy1"))
@@ -59,15 +55,6 @@ extension GameScene {
         pauseBtn.zPosition = 6
         self.addChild(pauseBtn)
     }
-
-    
-//    func createBackBtn(){
-//        backBtn = SKSpriteNode(imageNamed: "pause")
-//        backBtn.size = CGSize(width: 80, height: 80)
-//        backBtn.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2 - 120)
-//        backBtn.zPosition = 6
-//        self.addChild(backBtn)
-//    }
     
     func createScoreLabel() -> SKLabelNode {
         let scoreLbl = SKLabelNode()
@@ -117,7 +104,7 @@ extension GameScene {
     
     func createTaptoplayLabel() -> SKLabelNode{
         let taptoplayLbl = SKLabelNode()
-        taptoplayLbl.position = (CGPoint(x: self.frame.midX, y: self.frame.midY-130	))
+        taptoplayLbl.position = (CGPoint(x: self.frame.midX, y: self.frame.midY-130    ))
         taptoplayLbl.text = "Tap anywhere to play"
         taptoplayLbl.fontColor = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1.0)
         taptoplayLbl.zPosition = 5
@@ -207,4 +194,5 @@ extension GameScene {
         return random() * (max-min) + min
     }
 }
+
 
