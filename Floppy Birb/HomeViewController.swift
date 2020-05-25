@@ -28,14 +28,14 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var levelPicked: String = ""
     var themePicked: String = ""
     
-    var background = UIImage(named: "earthbg.png")
+    
     
     let user = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
-    
+    	
     var userPoints = Int()
-    let spacePrice = 20
-    let hellPrice = 40
+    let spacePrice = 200
+    let hellPrice = 400
     
     var pickedTheme = Int()
     
@@ -43,7 +43,13 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var isHellUnlocked = Bool()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+         
+        UserDefaults.standard.removeObject(forKey: "level")
+        UserDefaults.standard.removeObject(forKey: "theme")
+        //UserDefaults.standard.removeObject(forKey: "themePicked")
+        UserDefaults.standard.set("Easy", forKey: "level")
         
         themePicker.dataSource = self
         themePicker.delegate = self
@@ -75,8 +81,23 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
         
-        self.view.backgroundColor = UIColor(patternImage: background!)
+        let backTheme = UserDefaults.standard.string(forKey: "themePicked")
+        if(backTheme == nil){
+            
+            var background = UIImage(named: "earthbg.png")!
+            self.view.backgroundColor = UIColor(patternImage: background)
+            
+        }else{
+            
+            var background = UIImage(named: backTheme!)!
+            self.view.backgroundColor = UIColor(patternImage: background)
+        }
     }
+        
+        
+       
+    
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
@@ -127,6 +148,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.highscoreBtn.setTitleColor(UIColor.black, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
+                UserDefaults.standard.set("earthbg.png", forKey: "themePicked")
                 
             } else if pickedTheme == 1 {
                 self.view.backgroundColor = UIColor(patternImage: UIImage(named: "spacebg.png")!)
@@ -146,6 +168,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.highscoreBtn.setTitleColor(UIColor.white, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
+                UserDefaults.standard.set("spacebg.png", forKey: "themePicked")
                 
                 
             }
@@ -167,6 +190,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.highscoreBtn.setTitleColor(UIColor.white, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.9804734591, green: 0.2338542632, blue: 0.1084753929, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.9804734591, green: 0.2338542632, blue: 0.1084753929, alpha: 0.2112676056)
+                UserDefaults.standard.set("hellbg.png", forKey: "themePicked")
             }
             else{
                 self.view.backgroundColor = UIColor(patternImage: UIImage(named: "earthbg.png")!)
@@ -179,13 +203,14 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.highscoreBtn.setTitleColor(UIColor.black, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
+                UserDefaults.standard.set("earthbg.png", forKey: "themePicked")
             }
         }
     }
     
     @IBAction func unlockTapped(_ sender: Any){
         if(pickedTheme == 1){
-            if(userPoints > spacePrice){
+            if(userPoints >= spacePrice){
                
                     let updatePoints = userPoints - spacePrice
                 self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["spaceThemeUnlocked": true])
@@ -202,7 +227,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
         if(pickedTheme == 2){
-            if(userPoints > hellPrice){
+            if(userPoints >= hellPrice){
                
                     let updatePoints = userPoints - hellPrice
                 self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["hellThemeUnlocked": true])
@@ -230,9 +255,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBAction func playTapped(_ sender: Any){
         
-        if(self.levelLabel.text == "Choose Difficulty"){
-            UserDefaults.standard.set("Medium", forKey: "level")
-        }
+        
         
         let gameViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.gameViewController) as? GameViewController
         print(levelPicked)

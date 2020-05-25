@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
+        UserDefaults.standard.removeObject(forKey: "themePicked")
         setUpElements()
           }
         
@@ -125,7 +126,7 @@ class SignUpViewController: UIViewController {
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
         let gameViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.gameViewController) as? GameViewController
         
-        view.window?.rootViewController = gameViewController
+        view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
         
     }

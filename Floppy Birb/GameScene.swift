@@ -77,13 +77,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         var interval: CGFloat = 0
         
         if levelFinal == "Easy"{
-            interval = 0.005
+            interval = 0.011
         }
         else if levelFinal == "Medium"{
             interval = 0.008
         }
         else if levelFinal == "Hard"{
-            interval = 0.015
+            interval = 0.004
         }
         
         let distance = CGFloat(self.frame.width + wallPair.frame.width)
@@ -329,13 +329,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         } else if firstBody.categoryBitMask == CollisionBitMask.playerCategory &&
                   secondBody.categoryBitMask == CollisionBitMask.flowerCategory{
             run(pointSound)
-            score += 1
+            
+            if(levelFinal=="Easy"){
+                score += 1
+            }
+            else if(levelFinal=="Medium"){
+                score += 2
+            }
+            else if(levelFinal=="Hard"){
+                score += 3
+            }
+            
+            
+            
             scoreLbl.text = "\(score)"
             secondBody.node?.removeFromParent()
         } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory &&
             secondBody.categoryBitMask == CollisionBitMask.playerCategory{
             run(pointSound)
-            score += 1
+            if(levelFinal=="Easy"){
+                score += 1
+            }
+            else if(levelFinal=="Medium"){
+                score += 2
+            }
+            else if(levelFinal=="Hard"){
+                score += 3
+            }
             scoreLbl.text = "\(score)"
             firstBody.node?.removeFromParent()
         }
