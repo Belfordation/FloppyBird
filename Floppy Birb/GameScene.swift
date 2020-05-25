@@ -296,13 +296,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                                 for document in (snapshot?.documents)! {
                                     let scoreToDb = self.scoreLbl.text!
                                      let highscoreHard = (document.data()["highscoreHard"] as! NSString).intValue
+                                    
+                                    
                                      if(Int(scoreToDb)! > highscoreHard) {
                                     self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["highscoreHard": scoreToDb])
+                                        
                                       }
                                     }
                                 }
                             }
                         }
+                
+                doc.getDocuments{ (snapshot, error) in
+                    if error != nil{
+                        print(error)
+                    } else {
+                        for document in (snapshot?.documents)! {
+                            
+                            let currentPoints = document.data()["points"] as! String
+                            let newPoints = Int(currentPoints)! + self.score
+                            
+                        self.db.collection("users").document((Auth.auth().currentUser?.uid)!).updateData(["points": String(newPoints)])
+                            }
+                        }
+                    }
+                
                 isDead = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -332,4 +350,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         createScene()
     }
 }
+
 
