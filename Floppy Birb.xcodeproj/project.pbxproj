@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		133EB9916DBD45CE6DA34A27 /* Pods_Floppy_Birb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3A9F08FDD6F596A5B26B3 /* Pods_Floppy_Birb.framework */; };
+		4054491E247D4B45002310EF /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4054491D247D4B45002310EF /* player.atlas */; };
 		40756498245480EE00CFE072 /* HighscoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40756497245480EE00CFE072 /* HighscoreViewController.swift */; };
 		4436A1E5246B15AA00823B6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4436A1E4246B15AA00823B6B /* HomeViewController.swift */; };
 		445DEA5424476E15007EE194 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 445DEA5324476E15007EE194 /* GoogleService-Info.plist */; };
@@ -24,7 +25,6 @@
 		44F083DD2440F59C00029DF2 /* Floppy_BirbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F083DC2440F59C00029DF2 /* Floppy_BirbTests.swift */; };
 		44F083E82440F59C00029DF2 /* Floppy_BirbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F083E72440F59C00029DF2 /* Floppy_BirbUITests.swift */; };
 		44F083F72440F63300029DF2 /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 44F083F52440F63300029DF2 /* CoinSound.mp3 */; };
-		44F083F82440F63300029DF2 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 44F083F62440F63300029DF2 /* player.atlas */; };
 		44FA92772447601200EF811D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA92762447601200EF811D /* SignUpViewController.swift */; };
 		44FA92792447601D00EF811D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA92782447601D00EF811D /* LoginViewController.swift */; };
 		44FA927E244761B800EF811D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA927D244761B800EF811D /* ViewController.swift */; };
@@ -51,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		18E15C171B9CA13973FEA583 /* Pods-Floppy Birb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Floppy Birb.debug.xcconfig"; path = "Target Support Files/Pods-Floppy Birb/Pods-Floppy Birb.debug.xcconfig"; sourceTree = "<group>"; };
+		4054491D247D4B45002310EF /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
 		40756497245480EE00CFE072 /* HighscoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreViewController.swift; sourceTree = "<group>"; };
 		4436A1E4246B15AA00823B6B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		445DEA5324476E15007EE194 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		44F083E72440F59C00029DF2 /* Floppy_BirbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floppy_BirbUITests.swift; sourceTree = "<group>"; };
 		44F083E92440F59C00029DF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44F083F52440F63300029DF2 /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = CoinSound.mp3; path = ProjectFiles/CoinSound.mp3; sourceTree = SOURCE_ROOT; };
-		44F083F62440F63300029DF2 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = player.atlas; path = ProjectFiles/player.atlas; sourceTree = SOURCE_ROOT; };
 		44FA92762447601200EF811D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		44FA92782447601D00EF811D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44FA927D244761B800EF811D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,13 +155,13 @@
 			children = (
 				44FA927C2447603000EF811D /* View Controllers */,
 				44F083F52440F63300029DF2 /* CoinSound.mp3 */,
-				44F083F62440F63300029DF2 /* player.atlas */,
 				44F083C12440F59900029DF2 /* AppDelegate.swift */,
 				44F083C32440F59900029DF2 /* GameScene.sks */,
 				44F083C52440F59900029DF2 /* Actions.sks */,
 				44F083C72440F59900029DF2 /* GameScene.swift */,
 				449351912440F74B006BEE33 /* GameElements.swift */,
 				44F083CB2440F59900029DF2 /* Main.storyboard */,
+				4054491D247D4B45002310EF /* player.atlas */,
 				44F083CE2440F59C00029DF2 /* Assets.xcassets */,
 				44F083D32440F59C00029DF2 /* Info.plist */,
 				44F083D02440F59C00029DF2 /* LaunchScreen.storyboard */,
@@ -325,8 +325,8 @@
 				445DEA5424476E15007EE194 /* GoogleService-Info.plist in Resources */,
 				44F083F72440F63300029DF2 /* CoinSound.mp3 in Resources */,
 				44F083C42440F59900029DF2 /* GameScene.sks in Resources */,
+				4054491E247D4B45002310EF /* player.atlas in Resources */,
 				44F083CF2440F59C00029DF2 /* Assets.xcassets in Resources */,
-				44F083F82440F63300029DF2 /* player.atlas in Resources */,
 				44F083D22440F59C00029DF2 /* LaunchScreen.storyboard in Resources */,
 				44F083C62440F59900029DF2 /* Actions.sks in Resources */,
 			);
