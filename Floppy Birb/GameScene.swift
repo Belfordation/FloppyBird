@@ -42,9 +42,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let db = Firestore.firestore()
     
     override func didMove(to view: SKView) {
-        
-        
-        
         createScene()
     }
         
@@ -147,8 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     } else {
                         for document in (snapshot?.documents)! {
                             let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
-                            print("Baza highscoreEasy: \(highscore)")
-                            
+
                             
                         }
                     }
@@ -159,8 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                         print(error)
                     } else {
                         for document in (snapshot?.documents)! {
-                            let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
-                                print(highscore)
+                            let highscore = (document.data()["highscoreMedium"] as! NSString).intValue
                         }
                     }
                 }
@@ -171,8 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                         print(error)
                     } else {
                         for document in (snapshot?.documents)! {
-                            let highscore = (document.data()["highscoreEasy"] as! NSString).intValue
-                                print(highscore)
+                            let highscore = (document.data()["highscoreHard"] as! NSString).intValue
                         }
                     }
                 }

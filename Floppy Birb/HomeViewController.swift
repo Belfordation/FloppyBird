@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var highscoreBtn: UIButton!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var infoBtn: UIButton!
     
     var levels = [] as [String]
     var themes = [] as [String]
@@ -48,7 +49,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
          
         UserDefaults.standard.removeObject(forKey: "level")
         UserDefaults.standard.removeObject(forKey: "theme")
-        //UserDefaults.standard.removeObject(forKey: "themePicked")
         UserDefaults.standard.set("Easy", forKey: "level")
         
         themePicker.dataSource = self
@@ -146,6 +146,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.scoreLabel.textColor = UIColor.black
                 self.playBtn.setTitleColor(UIColor.black, for: .normal)
                 self.highscoreBtn.setTitleColor(UIColor.black, for: .normal)
+                self.infoBtn.setTitleColor(UIColor.black, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 UserDefaults.standard.set("earthbg.png", forKey: "themePicked")
@@ -166,6 +167,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.playBtn.setTitleColor(UIColor.white, for: .normal)
                 self.unlockBtn.setTitleColor(UIColor.white, for: .normal)
                 self.highscoreBtn.setTitleColor(UIColor.white, for: .normal)
+                self.infoBtn.setTitleColor(UIColor.white, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 UserDefaults.standard.set("spacebg.png", forKey: "themePicked")
@@ -188,6 +190,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.playBtn.setTitleColor(UIColor.white, for: .normal)
                 self.unlockBtn.setTitleColor(UIColor.white, for: .normal)
                 self.highscoreBtn.setTitleColor(UIColor.white, for: .normal)
+                self.infoBtn.setTitleColor(UIColor.white, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.9804734591, green: 0.2338542632, blue: 0.1084753929, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.9804734591, green: 0.2338542632, blue: 0.1084753929, alpha: 0.2112676056)
                 UserDefaults.standard.set("hellbg.png", forKey: "themePicked")
@@ -201,6 +204,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 self.scoreLabel.textColor = UIColor.black
                 self.playBtn.setTitleColor(UIColor.black, for: .normal)
                 self.highscoreBtn.setTitleColor(UIColor.black, for: .normal)
+                self.infoBtn.setTitleColor(UIColor.black, for: .normal)
                 themePicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 diffPicker.backgroundColor = #colorLiteral(red: 0.3419323945, green: 0.3670137947, blue: 0.9804734591, alpha: 0.2112676056)
                 UserDefaults.standard.set("earthbg.png", forKey: "themePicked")
@@ -261,6 +265,14 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         print(levelPicked)
         self.view.window?.rootViewController = gameViewController
         view.window?.makeKeyAndVisible()
+    }
+    
+    
+    @IBAction func infoTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Floppy Birb", message: "Tomasz Patrzalek | Mateusz Orelik", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

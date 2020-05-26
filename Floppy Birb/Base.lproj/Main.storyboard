@@ -309,6 +309,17 @@
                                     <action selector="unlockTapped:" destination="d01-2d-GIZ" eventType="touchUpInside" id="fk3-Ia-QeH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-fB-Pmq">
+                                <rect key="frame" x="20" y="823" width="30" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="?">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="infoTapped:" destination="d01-2d-GIZ" eventType="touchUpInside" id="Ki2-nq-etw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="AYY-3E-JGv"/>
@@ -316,6 +327,7 @@
                     <connections>
                         <outlet property="diffPicker" destination="eLT-En-q01" id="0jM-oE-VzT"/>
                         <outlet property="highscoreBtn" destination="78L-qN-Yjt" id="kDw-Bp-yoc"/>
+                        <outlet property="infoBtn" destination="gCd-fB-Pmq" id="STX-QV-Nvh"/>
                         <outlet property="levelLabel" destination="blG-qO-Pxd" id="XcF-s7-3Qs"/>
                         <outlet property="playBtn" destination="IO6-jZ-4zl" id="ZNG-kM-pR0"/>
                         <outlet property="scoreLabel" destination="7hI-Xb-taM" id="3mC-Qa-jYx"/>
