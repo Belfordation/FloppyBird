@@ -155,13 +155,11 @@
 			children = (
 				44FA927C2447603000EF811D /* View Controllers */,
 				44F083F52440F63300029DF2 /* CoinSound.mp3 */,
-				4436A1E4246B15AA00823B6B /* HomeViewController.swift */,
 				44F083F62440F63300029DF2 /* player.atlas */,
 				44F083C12440F59900029DF2 /* AppDelegate.swift */,
 				44F083C32440F59900029DF2 /* GameScene.sks */,
 				44F083C52440F59900029DF2 /* Actions.sks */,
 				44F083C72440F59900029DF2 /* GameScene.swift */,
-				44F083C92440F59900029DF2 /* GameViewController.swift */,
 				449351912440F74B006BEE33 /* GameElements.swift */,
 				44F083CB2440F59900029DF2 /* Main.storyboard */,
 				44F083CE2440F59C00029DF2 /* Assets.xcassets */,
@@ -194,6 +192,8 @@
 		44FA927C2447603000EF811D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				44F083C92440F59900029DF2 /* GameViewController.swift */,
+				4436A1E4246B15AA00823B6B /* HomeViewController.swift */,
 				44FA92782447601D00EF811D /* LoginViewController.swift */,
 				44FA92762447601200EF811D /* SignUpViewController.swift */,
 				44FA927D244761B800EF811D /* ViewController.swift */,
